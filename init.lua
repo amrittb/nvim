@@ -43,7 +43,17 @@ lazy.opts = {}
 -- Actual setup for plugins
 lazy.setup({
   -- Themes
-  {'folke/tokyonight.nvim'},
+  {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  },
+
+  -- Git related plugins
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
   {'tpope/vim-sleuth'},
@@ -139,6 +149,14 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 -- Change tabs to spaces
 vim.opt.expandtab = true
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.o.clipboard = 'unnamedplus'
 
 -- Add/Change key bindings
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
@@ -161,7 +179,6 @@ vim.keymap.set('n', '<C-g>', builtin.git_files, {})
 -- Apply terminal colors
 -- Uses Lazy.vim plugins
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('tokyonight')
 
 -- Neovim File explorer
 vim.g.netrw_banner = 0
@@ -173,7 +190,8 @@ require('lualine').setup({
   options = {
       icons_enabled = false,
       section_separators = '',
-      component_separators = ''
+      component_separators = '|',
+      theme = 'onedark',
     }
 })
 
