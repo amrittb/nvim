@@ -194,8 +194,12 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
 
 -- Plugin setup
--- Terminal
-require "toggleterm-config"
+-- 
+require("toggleterm").setup({
+  direction = "horizontal",
+  size = 15,
+  open_mapping = "<leader>j"
+})
 
 -- Status bar
 require('lualine').setup({
