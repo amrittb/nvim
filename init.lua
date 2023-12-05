@@ -1,3 +1,8 @@
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+-- Set leaderkey as <space>
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -------------------------------
 -- Setup Lazy.vim 
 -------------------------------
@@ -39,31 +44,43 @@ lazy.opts = {}
 lazy.setup({
   -- Themes
   {'folke/tokyonight.nvim'},
+
+  -- Detect tabstop and shiftwidth automatically
+  {'tpope/vim-sleuth'},
+
   -- Status line
   {'nvim-lualine/lualine.nvim'},
+
   -- Add Indent guidelines
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
   -- Allow comment toggle using 'gc'
   { 'numToStr/Comment.nvim', opts = {} },
+
+  -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     build = ":TSUpdate",
-    config = function () 
+    config = function ()
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
           ensure_installed = { "lua", "vim", "vimdoc", "json", "go", "gomod", "gosum", "gowork", "python", "java", "yaml" },
           sync_install = false,
+          indent = { enable = true },
           highlight = { enable = true },
-          indent = { enable = true },  
         })
     end
   },
+
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
--- or                              , branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -71,10 +88,14 @@ lazy.setup({
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
+      -- Useful status updates for LSP
+      'j-hui/fidget.nvim',
+
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
   },
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -90,13 +111,14 @@ lazy.setup({
       'rafamadriz/friendly-snippets',
     },
   },
+
+  -- Useful plugin to show you pending keybinds.
+  { 'folke/which-key.nvim', opts = {} },
 })
 
 -------------------------------
 -- Vim Options 
 -------------------------------
--- Set leaderkey as <space>
-vim.g.mapleader = ' '
 -- Show line numbers
 vim.opt.number = true
 -- Enable mouse selection for all modes
@@ -120,17 +142,21 @@ vim.opt.expandtab = true
 
 -- Add/Change key bindings
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
---  vim.keymap.set({'n', 'x'}, 'gy', '"+y')
 vim.keymap.set({'n', 'x'}, 'gp', '"+p')
---  vim.keymap.set({'n', 'x'}, 'x', '"_x')
---  vim.keymap.set({'n', 'x'}, 'X', '"_d')
---  vim.keymap.set('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>/', function ()
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<C-g>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- Apply terminal colors
 -- Uses Lazy.vim plugins
