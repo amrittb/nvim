@@ -1,0 +1,3 @@
+-- Neodev
+require('neodev').setup()
+
