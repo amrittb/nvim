@@ -9,6 +9,7 @@ require("nvim-treesitter.configs").setup({
     -- File formats
     "json",
     "yaml",
+    "markdown_inline",
 
     -- Golang
     "go",
