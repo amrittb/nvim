@@ -39,6 +39,8 @@ lazy.opts = {}
 lazy.setup({
   -- Themes
   'navarasu/onedark.nvim',
+  'folke/tokyonight.nvim',
+  { "catppuccin/nvim", name = "catppuccin" },
 
   -- UI: Status line
   'nvim-lualine/lualine.nvim',
