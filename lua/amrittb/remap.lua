@@ -14,11 +14,7 @@ vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 
--- Split screen vertically
-vim.keymap.set("n", "<leader>v", ":vsplit<CR><C-w>l", { noremap = true })
--- Remap Ctrl+movement keys to move between windows
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true })
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true })
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true })
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true })
+-- Split screen
+vim.keymap.set("n", "<leader>|", ":vsplit<CR><C-w>l", { noremap = true })
+vim.keymap.set("n", "<leader>-", ":split<CR><C-w>l", { noremap = true })
 
