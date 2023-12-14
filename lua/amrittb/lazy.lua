@@ -99,5 +99,8 @@ lazy.setup({
 
   -- Undotree
   'mbbill/undotree',
+
+  -- Add support for Git Worktree
+  'ThePrimeagen/git-worktree.nvim',
 })
 

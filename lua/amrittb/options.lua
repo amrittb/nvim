@@ -2,7 +2,7 @@
 -- Vim Options 
 -------------------------------
 -- Enable Fat cursor
-vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- Show line numbers
 vim.opt.number = true
