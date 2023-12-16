@@ -24,14 +24,20 @@ vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
 vim.keymap.set("n", "<leader>|", ":vsplit<CR><C-w>l", { noremap = true })
 vim.keymap.set("n", "<leader>-", ":split<CR><C-w>l", { noremap = true })
 
+-- Remap Ctrl+movement keys to move between windows
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true })
+
+-- Remap terminal to normal mode using ESC key
+vim.keymap.set("t", "<Esc>", "<C-\\><c-n>")
+
 -- Don"t loose paste register
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
--- Paste from OS copy register
-vim.keymap.set("n", "<leader>p", "\"+P")
 -- Copy to OS copy register
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set({"n", "v"}, "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- No operation for "Q"
