@@ -15,6 +15,16 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+lsp_zero.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['gopls'] = {'go'},
+  }
+})
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {'gopls', 'lua_ls'},
