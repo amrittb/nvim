@@ -103,5 +103,12 @@ lazy.setup({
 
   -- Add support for Git Worktree
   'ThePrimeagen/git-worktree.nvim',
+
+  -- Autopairs
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
 })
 
