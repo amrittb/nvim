@@ -7,8 +7,6 @@ vim.g.maplocalleader = " "
 -- No operation on normal and visual mode
 -- TODO: Terminal mode
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
--- Open Netrw
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
 -- TODO Fix conflict

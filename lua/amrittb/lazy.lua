@@ -110,5 +110,15 @@ lazy.setup({
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
   },
+
+  -- Nvim Tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false,
+  }
 })
 
