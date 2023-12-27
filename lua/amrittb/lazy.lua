@@ -119,6 +119,30 @@ lazy.setup({
       "nvim-tree/nvim-web-devicons",
     },
     lazy = false,
+  },
+
+  -- Obsidian
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",  -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/Private/Growth/Personal/personal-vault",
+        },
+        {
+          name = "work",
+          path = "~/Obsidian/rakuten-vault",
+        },
+      },
+    },
   }
 })
 
