@@ -22,12 +22,13 @@ lsp_zero.format_on_save({
   },
   servers = {
     ['gopls'] = {'go'},
+    ['jedi_language_server'] = {'python'},
   }
 })
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'gopls', 'lua_ls'},
+  ensure_installed = {'gopls', 'lua_ls', 'jedi_language_server'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
