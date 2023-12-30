@@ -95,9 +95,6 @@ lazy.setup({
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
 
-  -- Toggleterm
-  'akinsho/toggleterm.nvim',
-
   -- Undotree
   'mbbill/undotree',
 
@@ -144,6 +141,25 @@ lazy.setup({
           path = "~/Obsidian/rakuten-vault",
         },
       },
+    },
+  },
+
+  -- Tmux Neovim Navigator
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   }
 })
