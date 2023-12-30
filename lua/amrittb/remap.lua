@@ -5,14 +5,12 @@ vim.g.maplocalleader = " "
 
 -- See `:help vim.keymap.set()`
 -- No operation on normal and visual mode
--- TODO: Terminal mode
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
--- TODO Fix conflict
--- vim.keymap.set("v", "K", ":m ">-2<CR>gv=gv", { noremap = true })
-
 -- Helper remaps to move vertically
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true })
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
